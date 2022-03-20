@@ -12,7 +12,7 @@ function showUrl(v){
     $('#id_url').attr("href", req).text(req);
 }
 
-{% autoescape false %}
+
 $(window).ready(function(){
     // var url = getQueryString('url');
     var url ='{{player_addr}}';
@@ -22,7 +22,6 @@ $(window).ready(function(){
         player_begin(url);
     }
 });
-{% endautoescape %}
 </script>
 
 
