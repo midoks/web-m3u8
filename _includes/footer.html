@@ -15,15 +15,14 @@ function showUrl(v){
     var req = location.origin + location.pathname + '?url='+v;
     $('#id_interface').show();
     $('#id_url').attr("href", req).text(req);
+    $('#url').val(v);
 }
 
-
 $(window).ready(function(){
-    var url = getQueryString('url');
-    // var url ='{{player_addr}}';
+    // var url = getQueryString('url');
+    var url ='{{ site.def_player_addr }}';
     if (url) {
         showUrl(url);
-        $('#url').val(url);
         player_begin(url);
     }
 });
