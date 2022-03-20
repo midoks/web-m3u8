@@ -108,7 +108,6 @@ function updateStats() {
     document.getElementById('stats').innerText = text
 }
 
-player('{{ page.def_player_addr }}')
 function player(video_url){
     showUrl(video_url);
     dp.switchVideo({url: video_url});

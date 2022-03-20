@@ -68,7 +68,7 @@ var dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
     autoplay: true,
     video: {
-        url: '{{ page.def_player_addr }}',
+        url: 'https://sod.bunediy.com/20211112/L57EDNF2/index.m3u8',
         type: 'hls'
     },
     hlsjsConfig: {
@@ -108,7 +108,6 @@ function updateStats() {
     document.getElementById('stats').innerText = text
 }
 
-player('{{ page.def_player_addr }}')
 function player(video_url){
     showUrl(video_url);
     dp.switchVideo({url: video_url});

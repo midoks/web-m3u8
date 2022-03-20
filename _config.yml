@@ -50,6 +50,7 @@ about_path : /about.html
 
 #基本参数
 title: midoks
+def_player_addr: https://sod.bunediy.com/20211112/L57EDNF2/index.m3u8
 res_url : https://www.cachecha.com/resources
 categories: [test, sample]
 author :
