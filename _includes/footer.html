@@ -19,9 +19,12 @@ function showUrl(v){
 }
 
 $(window).ready(function(){
-    // var url = getQueryString('url');
+    var q_url = getQueryString('url');
     var url ='{{ site.def_player_addr }}';
-    if (url) {
+    if (q_url) {
+        showUrl(q_url);
+        player_begin(q_url);
+    } else {
         showUrl(url);
         player_begin(url);
     }
