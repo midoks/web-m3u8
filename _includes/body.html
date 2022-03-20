@@ -1,0 +1,125 @@
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
+<style type="text/css">
+   
+*{margin:0;border:0;padding:0;text-decoration:none}
+/*#stats{position:fixed;top:5px;left:10px;font-size:12px;color:#fdfdfd;z-index:2147483647;text-shadow:1px 1px 1px #000, 1px 1px 1px #000}*/
+</style>
+
+
+<script src="//cdn.bskchina.cn/p2p/p2p.js"></script>
+<!-- <script src="//cdn.jsdelivr.net/npm/cdnbye@latest"></script> -->
+<script src="//cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
+
+
+<div class="container" style="padding-top:60px;">
+
+    <div class="col-md-14 column">
+        <div class="panel panel-default">
+            <div id="m3u8_video" class="panel-body"></div>
+        </div>
+    </div>
+
+    <div class="col-md-14 column">
+        <form method="get">
+        
+        <center class="input-group" style="width: 100%;">
+            <div id="stats"></div>
+        </center>
+        
+         <br />
+         
+        <div class="input-group" style="width: 100%;">
+            <span  class="input-group-addon input-lg" style="width: 80px;">播放地址</span>
+            <input class="form-control input-lg" type="search" placeholder="输入播放地址[.m3u8]" id="url">
+        </div>
+        
+        <br />
+
+
+        <div id="id_interface" class="table-responsive" style="display: none;">
+          <table class="table">
+             <tr>
+                <td class="active">外接地址</td>
+                <td class="active">
+                    <a id="id_url" target="_blank" href=""></a>
+                </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div>
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="player_begin()">
+                立即播放
+            </button>
+        </div>
+        </form>
+    </div>
+    <br>
+</div>
+
+<script type="text/javascript">
+
+
+
+var dp = new DPlayer({
+    container: document.getElementById('m3u8_video'),
+    autoplay: true,
+    video: {
+        url: '{{player_addr}}',
+        type: 'hls'
+    },
+    hlsjsConfig: {
+        debug: false,
+        p2pConfig: {
+            // announce: "http://127.0.0.1:3030",
+            // wsSignalerAddr: 'ws://127.0.0.1:3030/ws',
+
+            announce: "https://gop2p.cachecha.com",
+            wsSignalerAddr: 'wss://gop2p.cachecha.com/ws',
+
+            logLevel: true,
+            live: false,        // set to true in live mode
+            // Other p2pConfig options provided by CDNBye
+            // https://docs.cdnbye.com/#/API
+        }
+    }
+});
+
+var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
+dp.on('stats', function (stats) {
+    _totalP2PDownloaded = stats.totalP2PDownloaded;
+    _totalP2PUploaded = stats.totalP2PUploaded;
+    updateStats();
+});
+dp.on('peerId', function (peerId) {
+    _peerId = peerId;
+});
+dp.on('peers', function (peers) {
+    _peerNum = peers.length;
+    updateStats();
+});
+
+function updateStats() {
+    var text = 'P2P正在为您加速' + (_totalP2PDownloaded/1024).toFixed(2)
+        + 'MB 已分享' + (_totalP2PUploaded/1024).toFixed(2) + 'MB' + ' 连接节点' + _peerNum + '个';
+    document.getElementById('stats').innerText = text
+}
+
+function player(video_url){
+    showUrl(video_url);
+    dp.switchVideo({url: video_url});
+    dp.play();
+}
+
+function player_begin(url){
+    if (typeof(url) =='undefined'){
+        var url = $("#url").val();
+        player(url);
+    } else {
+        player(url);
+    }
+}
+</script>
