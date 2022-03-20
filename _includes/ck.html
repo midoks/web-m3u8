@@ -1,0 +1,103 @@
+
+<style type="text/css">
+   
+*{margin:0;border:0;padding:0;text-decoration:none}
+/*#stats{position:fixed;top:5px;left:10px;font-size:12px;color:#fdfdfd;z-index:2147483647;text-shadow:1px 1px 1px #000, 1px 1px 1px #000}*/
+</style>
+
+
+<script src="//cdn.jsdelivr.net/npm/p2p-ckplayer@latest/ckplayer/ckplayer.min.js" charset="UTF-8"></script>
+
+<div class="container" style="padding-top:60px;">
+
+    <div class="col-md-14 column">
+        <div class="panel panel-default">
+            <div id="m3u8_video" class="panel-body"></div>
+        </div>
+    </div>
+
+    <div class="col-md-14 column">
+        <form method="get">
+        
+        <center class="input-group" style="width: 100%;">
+            <div id="stats"></div>
+        </center>
+        
+         <br />
+         
+        <div class="input-group" style="width: 100%;">
+            <span  class="input-group-addon input-lg" style="width: 80px;">播放地址</span>
+            <input class="form-control input-lg" type="search" placeholder="输入播放地址[.m3u8]" id="url">
+        </div>
+        
+        <br />
+
+
+        <div id="id_interface" class="table-responsive" style="display: none;">
+          <table class="table">
+             <tr>
+                <td class="active">外接地址</td>
+                <td class="active">
+                    <a id="id_url" target="_blank" href=""></a>
+                </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div>
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="player_begin()">
+                立即播放
+            </button>
+        </div>
+        </form>
+    </div>
+    <br>
+</div>
+
+<script type="text/javascript">
+
+
+
+var videoObject = {
+    container: '#m3u8_video',//“#”代表容器的ID，“.”或“”代表容器的class
+    variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+    autoplay:true,
+    html5m3u8:true,
+    video:'{{ page.def_player_addr }}',//视频地址
+    hlsjsConfig: {   // hlsjs和CDNBye的配置参数
+        debug: false,
+        // Other hlsjsConfig options provided by hls.js
+        p2pConfig: {
+            logLevel: 'debug',
+            live: false,        // 如果是直播设为true
+            getStats: function (totalP2PDownloaded, totalP2PUploaded, totalHTTPDownloaded) {
+                var total = totalHTTPDownloaded + totalP2PDownloaded;
+                document.querySelector('#stats').innerText = `p2p ratio: ${Math.round(totalP2PDownloaded/total*100)}%, saved traffic: ${totalP2PDownloaded}KB, uploaded: ${totalP2PUploaded}KB`;
+            },
+            // Other p2pConfig options provided by CDNBye
+            // https://docs.cdnbye.com/#/en/API
+        }
+    }
+};
+var playerObj = new ckplayer(videoObject);
+function updateStats() {
+    var text = 'P2P正在为您加速' + (_totalP2PDownloaded/1024).toFixed(2)
+        + 'MB 已分享' + (_totalP2PUploaded/1024).toFixed(2) + 'MB' + ' 连接节点' + _peerNum + '个';
+    document.getElementById('stats').innerText = text
+}
+
+function player(video_url){
+    showUrl(video_url);
+    playerObj.newVideo({autoplay:true,video:video_url});
+}
+
+function player_begin(url){
+    if (typeof(url) =='undefined'){
+        var url = $("#url").val();
+        player(url);
+    } else {
+        player(url);
+    }
+}
+</script>
