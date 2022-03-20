@@ -1,0 +1,46 @@
+<script type="text/javascript">
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+
+function showUrl(v){
+    var req = location.origin + location.pathname + '?url='+v;
+    $('#id_interface').show();
+    $('#id_url').attr("href", req).text(req);
+}
+
+{% autoescape false %}
+$(window).ready(function(){
+    // var url = getQueryString('url');
+    var url ='{{player_addr}}';
+    if (url) {
+        showUrl(url);
+        $('#url').val(url);
+        player_begin(url);
+    }
+});
+{% endautoescape %}
+</script>
+
+
+<!-- http://wechatfe.github.io/vconsole/demo.html -->
+<script type="text/javascript" src="/static/js/vconsole.min.js?v={{version}}"></script>
+<script type="text/javascript">
+    window.vConsole = new window.VConsole();
+</script>
+
+<script type="text/javascript" src="//js.users.51.la/19918859.js"></script>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c66706e0fc1b6293a62f8eba588390ec";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
