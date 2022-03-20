@@ -19,8 +19,8 @@ function showUrl(v){
 
 
 $(window).ready(function(){
-    // var url = getQueryString('url');
-    var url ='{{player_addr}}';
+    var url = getQueryString('url');
+    // var url ='{{player_addr}}';
     if (url) {
         showUrl(url);
         $('#url').val(url);
