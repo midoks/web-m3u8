@@ -44,12 +44,9 @@ redcloth:
 production_url : https://www.cachecha.com
 short_name : midoks
 
-tagline: 前端开发，javascript，html，css，ajax，用户体验，交互设计
-feed: /atom.xml
+tagline: M3U8在线解析 - M3U8在线播放器,M3U8播放器,M3U8在线,M3U8在线播放,M3U8直播源,M3U8
 index_path : /index.html
-archive_path: /archive.html
 categories_path : /cat.html
-tags_path : /tags.html
 about_path : /about.html
 
 #基本参数
@@ -60,8 +57,6 @@ author :
   name : midoks
   email : midoks@163.com
   github : midoks@github.com
-  weibo : http://weibo.com/midoks
-  weixin : weiyuchuxia
   feedburner : feedname
-  keywords : PHP程序猿
-  description: 学习－再学习
+  keywords : M3U8在线播放器,M3U8播放器,M3U8在线,M3U8在线播放,M3U8直播源,M3U8
+  description: M3U8在线播放器,M3U8播放器,M3U8在线,M3U8在线播放,M3U8直播源,M3U8
