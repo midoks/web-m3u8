@@ -41,12 +41,11 @@ kramdown:
 redcloth:
   hard_breaks: true
 
-production_url : https://www.cachecha.com
+production_url : https://www.cachecha.com/web-m3u8
 short_name : midoks
 
 tagline: M3U8在线解析 - M3U8在线播放器,M3U8播放器,M3U8在线,M3U8在线播放,M3U8直播源,M3U8
 index_path : /index.html
-categories_path : /cat.html
 about_path : /about.html
 
 #基本参数
