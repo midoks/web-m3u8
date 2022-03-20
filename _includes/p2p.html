@@ -9,7 +9,6 @@
 
 
 <script src="//cdn.bskchina.cn/p2p/p2p.js"></script>
-<!-- <script src="//cdn.jsdelivr.net/npm/cdnbye@latest"></script> -->
 <script src="//cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
 
 
@@ -73,13 +72,8 @@ var dp = new DPlayer({
     },
     hlsjsConfig: {
         debug: false,
+        // Other hlsjsConfig options provided by hls.js
         p2pConfig: {
-            // announce: "http://127.0.0.1:3030",
-            // wsSignalerAddr: 'ws://127.0.0.1:3030/ws',
-
-            announce: "https://gop2p.cachecha.com",
-            wsSignalerAddr: 'wss://gop2p.cachecha.com/ws',
-
             logLevel: true,
             live: false,        // set to true in live mode
             // Other p2pConfig options provided by CDNBye
