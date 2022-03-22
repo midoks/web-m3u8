@@ -60,57 +60,24 @@
     <br>
 </div>
 
+
 <script type="text/javascript">
 
 
-
-var dp = new DPlayer({
+const dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
-    autoplay: true,
     video: {
-        url: '{{ site.def_player_addr }}',
-        type: 'hls'
-    },
-    hlsjsConfig: {
-        debug: false,
-        p2pConfig: {
-            // announce: "http://127.0.0.1:3030",
-            // wsSignalerAddr: 'ws://127.0.0.1:3030/ws',
-
-            announce: "https://gop2p.cachecha.com",
-            wsSignalerAddr: 'wss://gop2p.cachecha.com/ws',
-
-            logLevel: true,
-            live: false,        // set to true in live mode
-            // Other p2pConfig options provided by CDNBye
-            // https://docs.cdnbye.com/#/API
-        }
+        url: '{{player_addr}}',
+        type: 'hls',
+        autoplay:true,
+        lang:'zh-cn',
+        screenshot:true
     }
 });
 
-var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
-dp.on('stats', function (stats) {
-    _totalP2PDownloaded = stats.totalP2PDownloaded;
-    _totalP2PUploaded = stats.totalP2PUploaded;
-    updateStats();
-});
-dp.on('peerId', function (peerId) {
-    _peerId = peerId;
-});
-dp.on('peers', function (peers) {
-    _peerNum = peers.length;
-    updateStats();
-});
-
-function updateStats() {
-    var text = 'P2P正在为您加速' + (_totalP2PDownloaded/1024).toFixed(2)
-        + 'MB 已分享' + (_totalP2PUploaded/1024).toFixed(2) + 'MB' + ' 连接节点' + _peerNum + '个';
-    document.getElementById('stats').innerText = text
-}
-
 function player(video_url){
     showUrl(video_url);
-    dp.switchVideo({url: video_url});
+    dp.switchVideo({url: video_url,});
     dp.play();
 }
 
