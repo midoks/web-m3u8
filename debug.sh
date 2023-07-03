@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
+source ~/.zshrc
 
 jekyll serve

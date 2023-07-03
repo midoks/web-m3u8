@@ -1,18 +1,4 @@
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/p2p-dplayer@latest/dist/DPlayer.min.css">
-<style type="text/css">
-   
-*{margin:0;border:0;padding:0;text-decoration:none}
-/*#stats{position:fixed;top:5px;left:10px;font-size:12px;color:#fdfdfd;z-index:2147483647;text-shadow:1px 1px 1px #000, 1px 1px 1px #000}*/
-</style>
-
-
-<script src="//cdn.bskchina.cn/p2p/p2p.js"></script>
-<!-- <script src="//cdn.jsdelivr.net/npm/cdnbye@latest"></script> -->
-<script src="//cdn.jsdelivr.net/npm/p2p-dplayer@latest"></script>
-
-
+<script src="//cdn.jsdelivr.net/npm/dplayer@1.27.1/dist/DPlayer.min.js"></script>
 <div class="container" style="padding-top:60px;">
 
     <div class="col-md-14 column">
@@ -68,7 +54,6 @@ const dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
     video: {
         url: '{{player_addr}}',
-        type: 'hls',
         autoplay:true,
         lang:'zh-cn',
         screenshot:true
