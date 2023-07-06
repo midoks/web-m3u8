@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>播放器</title>
+<script src="public/static/js/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/dplayer@1.27.1/dist/DPlayer.min.js"></script>
+<style>
+*{
+padding: 0px;
+margin: 0px;
+}
+</style>
+</head>
+<body>
+
+<div id="m3u8_video"></div>
+<script type="text/javascript">
+
+const dp = new DPlayer({
+    container: document.getElementById('m3u8_video'),
+    video: {
+        autoplay:true,
+        lang:'zh-cn',
+        screenshot:true
+    }
+});
+
+function player(video_url){
+    dp.switchVideo({url: video_url,});
+    dp.play();
+}
+
+function player_begin(url){
+    if (typeof(url) =='undefined'){
+        var url = $("#url").val();
+        player(url);
+    } else {
+        player(url);
+    }
+}
+
+
+function getQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+$(window).ready(function(){
+    var q_url = getQueryString('url');
+    var url ='https://s.xlzys.com/play/5eVr1nze/index.m3u8';
+    if (q_url) {
+        player_begin(q_url);
+    } else {
+        showUrl(url);
+        player_begin(url);
+    }
+});
+
+</script>
+</body>
+</html>
