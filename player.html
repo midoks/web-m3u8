@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>播放器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <script src="public/static/js/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/dplayer@1.27.1/dist/DPlayer.min.js"></script>
+<meta name="msvalidate.01" content="88BEAE23BDD10DEA58324FAD3B498879" />
+<script src="/public/static/hls.min.js"></script>
+<meta http-equiv="x-dns-prefetch-control" content="on">
 <style>
 *{
 padding: 0px;
@@ -23,7 +27,8 @@ const dp = new DPlayer({
     video: {
         autoplay:true,
         lang:'zh-cn',
-        screenshot:true
+        screenshot:true,
+        url: 'https://s.xlzys.com/play/5eVr1nze/index.m3u8',
     }
 });
 
