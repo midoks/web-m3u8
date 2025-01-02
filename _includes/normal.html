@@ -61,18 +61,18 @@ const dp = new DPlayer({
     lang:'zh-cn',
     screenshot:true,
     chromecast:true,
-    // type: 'customHls',
     airplay:true,
-    // customType: {
-    //     customHls: function (video, player) {
-    //         const hls = new Hls();
-    //         hls.loadSource(video.src);
-    //         hls.attachMedia(video);
-    //     },
-    // },
     video: {
         type: 'auto',
         url: '{{player_addr}}',
+        // type: 'customHls',
+        // customType: {
+        // customHls: function (video, player) {
+        //         const hls = new Hls();
+        //         hls.loadSource(video.src);
+        //         hls.attachMedia(video);
+        //     },
+        // },
     }
 });
 
