@@ -1,3 +1,4 @@
+<script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
 <script src="//cdn.jsdelivr.net/npm/dplayer@1.27.1/dist/DPlayer.min.js"></script>
 <div class="container" style="padding-top:60px;">
 
@@ -53,6 +54,7 @@
 const dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
     video: {
+        type: 'hls',
         url: '{{player_addr}}',
         autoplay:true,
         lang:'zh-cn',
