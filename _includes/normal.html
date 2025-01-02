@@ -53,19 +53,29 @@
 
 const dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
+    preload:'auto',
+    theme: '#FADFA3',
+    hotkey: true,
+    mutex: true,
+    autoplay:true,
+    lang:'zh-cn',
+    screenshot:true,
+    chromecast:true,
+    airplay:true,
+    autoplay:true,
+    screenshot:true,
+    // type: 'customHls',
+    chromecast:true,
+    airplay:true,
+    // customType: {
+    //     customHls: function (video, player) {
+    //         const hls = new Hls();
+    //         hls.loadSource(video.src);
+    //         hls.attachMedia(video);
+    //     },
+    // },
     video: {
         url: '{{player_addr}}',
-        autoplay:true,
-        lang:'zh-cn',
-        screenshot:true,
-        type: 'customHls',
-        customType: {
-            customHls: function (video, player) {
-                const hls = new Hls();
-                hls.loadSource(video.src);
-                hls.attachMedia(video);
-            },
-        },
     }
 });
 
