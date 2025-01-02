@@ -51,7 +51,7 @@ about_path : /about.html
 #基本参数
 title: midoks
 # https://s6.bfzycdn.com/video/jueshiwanghong/第01集/index.m3u8
-def_player_addr: https://s.xlzys.com/play/5eVr1nze/index.m3u8
+def_player_addr: https://v4.longshengtea.com/yyv4/202308/26/1a0tVVmRK01/video/index.m3u8
 res_url : https://www.cachecha.com/resources
 categories: [test, sample]
 author :
