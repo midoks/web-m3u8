@@ -54,11 +54,18 @@
 const dp = new DPlayer({
     container: document.getElementById('m3u8_video'),
     video: {
-        type: 'hls',
         url: '{{player_addr}}',
         autoplay:true,
         lang:'zh-cn',
         screenshot:true,
+        type: 'customHls',
+        customType: {
+            customHls: function (video, player) {
+                const hls = new Hls();
+                hls.loadSource(video.src);
+                hls.attachMedia(video);
+            },
+        },
     }
 });
 
